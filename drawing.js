@@ -38,6 +38,7 @@ function CanvasState(canvas) {
   // **** First some setup! ****
 
   this.canvas = canvas;
+  this.canvasID = canvas.id;
   this.width = canvas.width;
   this.height = canvas.height;
   this.ctx = canvas.getContext('2d');
@@ -112,6 +113,19 @@ function CanvasState(canvas) {
       myState.selection.x = mouse.x - myState.dragoffx;
       myState.selection.y = mouse.y - myState.dragoffy;
       myState.valid = false; // Something's dragging so we must redraw
+
+      if (mouse.x > myState.dragoffx + 180){
+        // myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, 'rgba(0,255,0,.6)'));
+        explodeDots(myState, 'right', mouse);
+      }
+      if (mouse.x < myState.dragoffx + 15){
+        // myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, 'rgba(0,255,0,.6)'));
+        explodeDots(myState, 'left', mouse);
+      }
+      if (mouse.y < myState.dragoffy + 15){
+        explodeDots(myState, 'top', mouse);
+      }
+
     }
   }, true);
   canvas.addEventListener('mouseup', function(e) {
@@ -136,6 +150,10 @@ CanvasState.prototype.addShape = function(shape) {
   this.valid = false;
 }
 
+CanvasState.prototype.removeShape = function(){
+  this.shapes.pop();
+}
+
 CanvasState.prototype.clear = function() {
   this.ctx.clearRect(0, 0, this.width, this.height);
 }
@@ -153,6 +171,11 @@ CanvasState.prototype.draw = function() {
 
     // draw all shapes
     var l = shapes.length;
+
+    var selectorID = (this.canvasID + "Counter");
+
+    document.getElementById(selectorID).innerHTML = l;
+
     for (var i = 0; i < l; i++) {
       var shape = shapes[i];
       // We can skip the drawing of elements that have moved off the screen:
@@ -201,16 +224,40 @@ CanvasState.prototype.getMouse = function(e) {
   // We return a simple javascript object (a hash) with x and y defined
   return {x: mx, y: my};
 }
-
 // If you dont want to use <body onLoad='init()'>
 // You could uncomment this init() reference and place the script reference inside the body tag
+function explodeDots(myState, sideSelector, mouse){
+  var shapeToRemove = myState.shapes.indexOf(myState.selection);
+  if(shapeToRemove > -1){
+    if((sideSelector === 'left') & (myState.canvasID !== "canvas1")){
+      if(myState.shapes.length >= 10){
+        myState.shapes.splice(shapeToRemove, 1);
+        for(i=0; i < 9; i++){
+          myState.removeShape();
+        }
+      }
+    }
 
+    if((sideSelector === 'right') & (myState.canvasID !== 'canvas4')){
+      myState.shapes.splice(shapeToRemove, 1);
+    }
 
-function init() {
+    if(sideSelector === 'top'){
+      myState.shapes.splice(shapeToRemove, 1);
+    }
+  }
+}
+
+function creator(){
   var thousands = new CanvasState(document.getElementById('canvas1'));
   var hundreds = new CanvasState(document.getElementById('canvas2'));
   var tens = new CanvasState(document.getElementById('canvas3'));
   var ones = new CanvasState(document.getElementById('canvas4'));
+
+}
+
+function init() {
+  creator();
 }
 
 // Now go make something amazing!
