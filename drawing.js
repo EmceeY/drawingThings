@@ -66,6 +66,8 @@ function CanvasState(canvas) {
   this.selection = null;
   this.dragoffx = 0; // See mousedown and mousemove events for explanation
   this.dragoffy = 0;
+  this.addTen = false;
+  this.addOne = false;
 
   // **** Then events! ****
 
@@ -231,19 +233,40 @@ function explodeDots(myState, sideSelector, mouse){
   if(shapeToRemove > -1){
     if((sideSelector === 'left') & (myState.canvasID !== "canvas1")){
       if(myState.shapes.length >= 10){
+        myState.addOne = true;
         myState.shapes.splice(shapeToRemove, 1);
-        for(i=0; i < 9; i++){
+        myState.selection = null;
+        for(k=0; k < 9; k++){
           myState.removeShape();
         }
+
       }
     }
 
     if((sideSelector === 'right') & (myState.canvasID !== 'canvas4')){
+      myState.addTen = true;
       myState.shapes.splice(shapeToRemove, 1);
+      myState.selection = null;
     }
 
     if(sideSelector === 'top'){
       myState.shapes.splice(shapeToRemove, 1);
+    }
+  }
+}
+
+function checkNumbers(canvases){
+  for (i=0; i < canvases.length; i++){
+    if(canvases[i].addTen === true){
+      canvases[i].addTen = false;
+      for (j=0; j < 10; j++){
+        canvases[i+1].addShape(new Shape(50, 50, 20, 20, 'rgba(0,255,0,.6)'));
+      }
+    }
+    else if( (i > 0) & (canvases[i].addOne === true)){
+      canvases[i].addOne = false;
+      canvases[i-1].addShape(new Shape(50, 50, 20, 20, 'rgba(0,255,0,.6)'));
+      return;
     }
   }
 }
@@ -253,11 +276,17 @@ function creator(){
   var hundreds = new CanvasState(document.getElementById('canvas2'));
   var tens = new CanvasState(document.getElementById('canvas3'));
   var ones = new CanvasState(document.getElementById('canvas4'));
+  var canvases = [thousands, hundreds, tens, ones];
+
+  document.addEventListener('mousemove', function(e) {
+  checkNumbers(canvases)}, true);
+
 
 }
 
 function init() {
   creator();
+
 }
 
 // Now go make something amazing!
