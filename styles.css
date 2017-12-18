@@ -1,11 +1,81 @@
+.fullPage{
+  background: radial-gradient(#218ffe 10%, #405275 90%);
+}
+
 .draw{
   display: inline-block;
 }
 
-.title{
+.canvas{
+  background: linear-gradient(rgba(100, 100, 100, .75), rgba(0, 0, 0, .75)); ;
+}
+
+.titleContainer{
+  text-align: center;
+  background-color: linear-gradient(to left, rgba(100, 100, 100, 0), rgba(100, 100, 100, .75) 28px, rgba(100, 100, 100, .75) 50%, rgba(100, 100, 100, 0));
+}
+
+span{
+  color: #f99e1a;
+}
+
+.titleThousands{
   display: inline-block;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding-left: 0px;
+  padding-right: 20px;
   height: 100%;
   margin: 0 auto;
+}
+
+#canvas1Counter{
+  display: inline-block;
+  padding-left: 0px;
+  padding-right: 50px;
+}
+
+.titleHundreds{
+  display: inline-block;
+  padding-left: 40px;
+  padding-right: 20px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#canvas2Counter{
+  display: inline-block;
+  padding-left: 0px;
+  padding-right: 30px;
+}
+
+.titleTens{
+  display: inline-block;
+  padding-left: 90px;
+  padding-right: 20px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#canvas3Counter{
+  display: inline-block;
+  padding-left: 0px;
+  padding-right: 40px;
+}
+
+.titleOnes{
+  display: inline-block;
+  padding-left: 90px;
+  padding-right: 20px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#canvas4Counter{
+  display: inline-block;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.kaboomContainer{
+  margin: 0 auto;
+  text-align: center;
 }
