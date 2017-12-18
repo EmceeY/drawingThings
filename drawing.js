@@ -239,7 +239,6 @@ function explodeDots(myState, sideSelector, mouse){
         for(k=0; k < 9; k++){
           myState.removeShape();
         }
-
       }
     }
 
@@ -251,6 +250,7 @@ function explodeDots(myState, sideSelector, mouse){
 
     if(sideSelector === 'top'){
       myState.shapes.splice(shapeToRemove, 1);
+      myState.selection = null;
     }
   }
 }
@@ -260,12 +260,12 @@ function checkNumbers(canvases){
     if(canvases[i].addTen === true){
       canvases[i].addTen = false;
       for (j=0; j < 10; j++){
-        canvases[i+1].addShape(new Shape(50, 50, 20, 20, 'rgba(0,255,0,.6)'));
+        canvases[i+1].addShape(new Shape(randomNumber(20, 170), randomNumber(20, 500), 20, 20, 'rgba(0,255,0,.6)'));
       }
     }
     else if( (i > 0) & (canvases[i].addOne === true)){
       canvases[i].addOne = false;
-      canvases[i-1].addShape(new Shape(50, 50, 20, 20, 'rgba(0,255,0,.6)'));
+      canvases[i-1].addShape(new Shape(randomNumber(20, 170), randomNumber(20, 500), 20, 20, 'rgba(0,255,0,.6)'));
       return;
     }
   }
@@ -280,8 +280,10 @@ function creator(){
 
   document.addEventListener('mousemove', function(e) {
   checkNumbers(canvases)}, true);
+}
 
-
+function randomNumber(min, max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function init() {
