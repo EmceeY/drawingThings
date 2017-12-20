@@ -7,7 +7,7 @@
 }
 
 .canvas{
-  background: linear-gradient(rgba(100, 100, 100, .75), rgba(0, 0, 0, .75)); ;
+  background: rgba(255, 255, 255, 1) ;
 }
 
 .titleContainer{
@@ -16,10 +16,16 @@
 }
 
 span{
-  color: #f99e1a;
+  color: white;
 }
 
 .titleThousands{
+  display: inline-block;
+  padding-left: 0px;
+  padding-right: 50px;
+}
+
+#canvas1Counter{
   display: inline-block;
   padding-left: 0px;
   padding-right: 20px;
@@ -27,13 +33,13 @@ span{
   margin: 0 auto;
 }
 
-#canvas1Counter{
+.titleHundreds{
   display: inline-block;
   padding-left: 0px;
-  padding-right: 50px;
+  padding-right: 30px;
 }
 
-.titleHundreds{
+#canvas2Counter{
   display: inline-block;
   padding-left: 40px;
   padding-right: 20px;
@@ -41,38 +47,32 @@ span{
   margin: 0 auto;
 }
 
-#canvas2Counter{
-  display: inline-block;
-  padding-left: 0px;
-  padding-right: 30px;
-}
-
 .titleTens{
-  display: inline-block;
-  padding-left: 90px;
-  padding-right: 20px;
-  height: 100%;
-  margin: 0 auto;
-}
-
-#canvas3Counter{
   display: inline-block;
   padding-left: 0px;
   padding-right: 40px;
 }
 
-.titleOnes{
+#canvas3Counter{
   display: inline-block;
-  padding-left: 90px;
+  padding-left: 70px;
   padding-right: 20px;
   height: 100%;
   margin: 0 auto;
 }
 
-#canvas4Counter{
+.titleOnes{
   display: inline-block;
   padding-left: 0px;
   padding-right: 0px;
+}
+
+#canvas4Counter{
+  display: inline-block;
+  padding-left: 90px;
+  padding-right: 20px;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .kaboomContainer{

@@ -136,7 +136,7 @@ function CanvasState(canvas) {
   // double click for making new shapes
   canvas.addEventListener('dblclick', function(e) {
     var mouse = myState.getMouse(e);
-    myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, 'rgba(249,158,26,.6)'));
+    myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, 'rgba(0,0,0,1)'));
   }, true);
 
   // **** Options! ****
@@ -260,12 +260,12 @@ function checkNumbers(canvases){
     if(canvases[i].addTen === true){
       canvases[i].addTen = false;
       for (j=0; j < 10; j++){
-        canvases[i+1].addShape(new Shape(randomNumber(20, 170), randomNumber(20, 500), 20, 20, 'rgba(249,158,26,.6)'));
+        canvases[i+1].addShape(new Shape(randomNumber(20, 170), randomNumber(20, 500), 20, 20, 'rgba(0,0,0,1)'));
       }
     }
     else if( (i > 0) & (canvases[i].addOne === true)){
       canvases[i].addOne = false;
-      canvases[i-1].addShape(new Shape(randomNumber(20, 170), randomNumber(20, 500), 20, 20, 'rgba(249,158,26,.6)'));
+      canvases[i-1].addShape(new Shape(randomNumber(20, 170), randomNumber(20, 500), 20, 20, 'rgba(0,0,0,1)'));
       return;
     }
   }
