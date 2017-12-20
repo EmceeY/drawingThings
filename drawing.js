@@ -100,6 +100,9 @@ function CanvasState(canvas) {
         return;
       }
     }
+
+    var mouse = myState.getMouse(e);
+    myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, 'rgba(0,0,0, .8)'));
     // havent returned means we have failed to select anything.
     // If there was an object selected, we deselect it
     if (myState.selection) {
@@ -132,11 +135,6 @@ function CanvasState(canvas) {
   }, true);
   canvas.addEventListener('mouseup', function(e) {
     myState.dragging = false;
-  }, true);
-  // double click for making new shapes
-  canvas.addEventListener('dblclick', function(e) {
-    var mouse = myState.getMouse(e);
-    myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, 'rgba(0,0,0,1)'));
   }, true);
 
   // **** Options! ****
@@ -260,12 +258,12 @@ function checkNumbers(canvases){
     if(canvases[i].addTen === true){
       canvases[i].addTen = false;
       for (j=0; j < 10; j++){
-        canvases[i+1].addShape(new Shape(randomNumber(20, 170), randomNumber(20, 500), 20, 20, 'rgba(0,0,0,1)'));
+        canvases[i+1].addShape(new Shape(randomNumber(20, 170), randomNumber(20, 500), 20, 20, 'rgba(0,0,0, .8)'));
       }
     }
     else if( (i > 0) & (canvases[i].addOne === true)){
       canvases[i].addOne = false;
-      canvases[i-1].addShape(new Shape(randomNumber(20, 170), randomNumber(20, 500), 20, 20, 'rgba(0,0,0,1)'));
+      canvases[i-1].addShape(new Shape(randomNumber(20, 170), randomNumber(20, 500), 20, 20, 'rgba(0,0,0, .8)'));
       return;
     }
   }
