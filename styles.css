@@ -11,7 +11,7 @@
 }
 
 .titleContainer{
-  text-align: center;
+  font-size:20px;
   background-color: linear-gradient(to left, rgba(100, 100, 100, 0), rgba(100, 100, 100, .75) 28px, rgba(100, 100, 100, .75) 50%, rgba(100, 100, 100, 0));
 }
 
@@ -23,12 +23,13 @@ span{
   display: inline-block;
   padding-left: 0px;
   padding-right: 50px;
+  margin: auto;
 }
 
 #canvas1Counter{
   display: inline-block;
   padding-left: 0px;
-  padding-right: 20px;
+  padding-right: 10px;
   height: 100%;
   margin: 0 auto;
 }
@@ -36,13 +37,14 @@ span{
 .titleHundreds{
   display: inline-block;
   padding-left: 0px;
-  padding-right: 30px;
+  padding-right: 90px;
+  margin: auto;
 }
 
 #canvas2Counter{
   display: inline-block;
-  padding-left: 40px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 100%;
   margin: 0 auto;
 }
@@ -50,13 +52,14 @@ span{
 .titleTens{
   display: inline-block;
   padding-left: 0px;
-  padding-right: 40px;
+  padding-right: 100px;
+  margin: auto;
 }
 
 #canvas3Counter{
   display: inline-block;
-  padding-left: 70px;
-  padding-right: 20px;
+  padding-left: 0px;
+  padding-right: 10px;
   height: 100%;
   margin: 0 auto;
 }
@@ -64,13 +67,14 @@ span{
 .titleOnes{
   display: inline-block;
   padding-left: 0px;
-  padding-right: 0px;
+  padding-right: 40px;
+  margin: auto;
 }
 
 #canvas4Counter{
   display: inline-block;
-  padding-left: 90px;
-  padding-right: 20px;
+  padding-left: 20px;
+  padding-right: 10px;
   height: 100%;
   margin: 0 auto;
 }
